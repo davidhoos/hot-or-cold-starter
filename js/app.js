@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	
 	/*--- Display information modal box ---*/
@@ -11,62 +10,58 @@ $(document).ready(function(){
   	$("a.close").click(function(){
   		$(".overlay").fadeOut(1000);
   	});
-
-// When the page loads, JavaScript should start a new game.
-// Since you’ll need to be able to start a new game when the'
-//'user clicks the “New Game” button, you’ll want to create 
-// newGame function that does everything necessary to start
-// a new game.
-
-// function newGame()
-
-$("new").clear(){
-
 })
 
+// My Hot & Cold Game 
 
-// When a new game starts, a secret number between 1 and 100 
-// should be generated that the user will have to guess. You 
-// should write a named function that takes care of this.
+//Create a newGame function that resets all settings.
+// function newGame()
 
-function autoNumber(){
-	randomNumber = Math.floor((Math.random() * 100) + 1);
+function newGame() {
+	// Reset number of guesses
+	// Create new random number
 }
 
 
+// When a new game starts, a secret number between 1 and 100 
+// is automatically generated for the visitor to guess. 
 
-// function secretNumber()
+function autoNumber(){
+	autoNumber = Math.floor((Math.random() * 100) + 1);
+}
 
-$("userGuess")
+// 
 
+
+
+
+// A function that takes the number difference and tells whether their guess is hot or cold.
+// function hotOrCold()
 
 function numDifference(){
+	
+	var userGuess = $("#userGuess").val();
+	var numDiff = Math.abs(userGuess - autoNumber);
 
-	var numDiff = Number($(userGuess).text()) - Number($(autoNumber).text());
-
-	// Write a function that pulls the number difference and tells whether they are hot or cold based on how large the number.
-	// function hotOrCold()
-
-	if (numDiff > 50) {
-		console.log ("You are very cold")
+	if (numDiff < 10) {
+		$("#guessList").text("You are very hot")
 	}
 
-	else if (numdiff < 50 && > 30) {
-		console.log ("You are cold")
+	else if (numDiff < 20) {
+		$("#guessList").text("You are hot")
 	}
 
-	else if (numdiff < 30 && > 20) {
-		console.log ("You are warm")
+	else if (numDiff < 30) {
+		$("#guessList").text("You are warm")
 	}
 
-	else if (numdiff < 20 && > 10) {
-		console.log ("You are hot")
+	else if (numDiff < 51) {
+		$("#guessList").text("You are cold")
 	}
 
-	else if (numdiff < 10 && > 1) {
-		console.log ("You are very hot")
+	else {
+		$("#guessList").text("You are very cold")
 	}
-
 }
 
 //Guess feedback goes to: div#feedback
@@ -99,7 +94,5 @@ function numDifference(){
 
 
 
-
-});
 
 

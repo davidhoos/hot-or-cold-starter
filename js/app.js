@@ -10,62 +10,58 @@ $(document).ready(function(){
   	$("a.close").click(function(){
   		$(".overlay").fadeOut(1000);
   	});
-})
 
-// My Hot & Cold Game 
+  	// Call +NewGame function when clicked
+	$(".new").click(function(){
+		newGame()
+	});
+
 
 //Create a newGame function that resets all settings.
-// function newGame()
 
 function newGame() {
-	// Reset number of guesses
+	
 	// Create new random number
+	var $("userGuess") = null;
+
+	// Reset number of guesses
+	function autoNumber();
 }
 
 
-// When a new game starts, a secret number between 1 and 100 
-// is automatically generated for the visitor to guess. 
-
+// Mystery number generator
 function autoNumber(){
 	autoNumber = Math.floor((Math.random() * 100) + 1);
 }
 
-// 
-
-
-
-
-// A function that takes the number difference and tells whether their guess is hot or cold.
-// function hotOrCold()
-
+// Is the guess hot or cold?
 function numDifference(){
 	
 	var userGuess = $("#userGuess").val();
 	var numDiff = Math.abs(userGuess - autoNumber);
 
 	if (numDiff < 10) {
-		$("#guessList").text("You are very hot")
+		$("#guessList").text("You are very hot").append();
 	}
 
 	else if (numDiff < 20) {
-		$("#guessList").text("You are hot")
+		$("#guessList").text("You are hot").append()
 	}
 
 	else if (numDiff < 30) {
-		$("#guessList").text("You are warm")
+		$("#guessList").text("You are warm").append()
 	}
 
 	else if (numDiff < 51) {
-		$("#guessList").text("You are cold")
+		$("#guessList").text("You are cold").append()
 	}
 
 	else {
-		$("#guessList").text("You are very cold")
+		$("#guessList").text("You are very cold").append()
 	}
 }
 
 //Guess feedback goes to: div#feedback
-
 
 
 
@@ -92,7 +88,7 @@ function numDifference(){
 // calls to the server. Clicking “New Game” should trigger the JavaScript function 
 // that starts a new game.
 
-
+})
 
 
 

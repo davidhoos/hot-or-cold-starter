@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	
+
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
     	$(".overlay").fadeIn(1000);
@@ -12,52 +13,66 @@ $(document).ready(function(){
   	});
 
   	// Call +NewGame function when clicked
-	$(".new").click(function(){
-		newGame()
+	$(".newGame").click(function(){
+		newGame();
 	});
 
+	// When guess button is clicked, functions are run.
+	$("#guessButton").click(function(evt) {
+		numDifference();
+		evt.preventDefault();
+	});
+
+});
 
 //Create a newGame function that resets all settings.
 
 function newGame() {
 	
 	// Create new random number
-	var $("userGuess") = null;
+	$("#userGuess").val("");
 
 	// Reset number of guesses
-	function autoNumber();
+	autoNumber();
+
+
+
 }
 
 
 // Mystery number generator
 function autoNumber(){
-	autoNumber = Math.floor((Math.random() * 100) + 1);
+	randomNumber = Math.floor((Math.random() * 100) + 1);
+	console.log("test");
 }
 
 // Is the guess hot or cold?
 function numDifference(){
 	
 	var userGuess = $("#userGuess").val();
-	var numDiff = Math.abs(userGuess - autoNumber);
+	var numDiff = Math.abs(userGuess - randomNumber);
+	if (numDiff == 0) {
+		$("#guessList").append("<li>You are correct!</li>");
+	}
 
-	if (numDiff < 10) {
-		$("#guessList").text("You are very hot").append();
+	else if (numDiff < 10) {
+		$("#guessList").append("<li>You are very hot</li>");
 	}
 
 	else if (numDiff < 20) {
-		$("#guessList").text("You are hot").append()
+		$("#guessList").append("<li>You are hot</li>");
 	}
 
 	else if (numDiff < 30) {
-		$("#guessList").text("You are warm").append()
+		$("#guessList").append("<li>You are warm</li>");
 	}
 
 	else if (numDiff < 51) {
-		$("#guessList").text("You are cold").append()
+		$("#guessList").append("<li>You are cold</li>");
 	}
 
 	else {
-		$("#guessList").text("You are very cold").append()
+		$("#guessList").append("<li>You are very cold</li>");
 	}
 }
 
@@ -88,7 +103,6 @@ function numDifference(){
 // calls to the server. Clicking “New Game” should trigger the JavaScript function 
 // that starts a new game.
 
-})
 
 
 
